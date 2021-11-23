@@ -1,7 +1,7 @@
 <?php
 require "includes/connect.php";
 
-$id = htmlspecialchars(trim($_GET['id']));
+$id = intval(htmlspecialchars(trim($_GET['id'])));
 
 try {
 

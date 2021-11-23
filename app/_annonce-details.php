@@ -1,25 +1,39 @@
 <?php
 require "_view-details.php";
+include_once "_bootstrap.php";
 include_once "_navbar.php";
 include_once "_alerts.php";
 ?>
 
 <?php echo $alert ? "<div class='alert alert-{$type} mt-2'>{$message}</div>" : ''; ?>
 
-<ul>
-    <li><?php echo $annonce['annonce_id']?></li>
-    <li><?php echo strtoupper($annonce['titre'])?></li>
-    <li><?php echo $annonce['description']?></li>
-    <li><?php echo $annonce['code_postal']?></li>
-    <li><?php echo $annonce['ville']?></li>
-    <li><?php echo $annonce['type']?></li>
-    <li><?php echo $annonce['prix']?></li>
-    <li><?php echo $annonce['msg_reservation']?></li>
+<section class="d-flex justify-content-center">
     
-    <form action="reserved-post.php" method="POST">
-        <input type="hidden" name="id" value="<?php echo $annonce['annonce_id']; ?>">
-        <textarea name="msg_reservation" id="msg_reservation" cols="30" rows="10"></textarea>
-        <button type="submit">Je réserve</button>
-    </form>
-    <li><a href="all-annonces.php">Retour</a></li>
-</ul>
+    <div class="card shadow w-50 mt-5" style="width: 18rem;">
+        <div class="card-body">
+            <p><?php echo $annonce['annonce_id']?></p>
+            <h3 class="card-title text-center"><?php echo strtoupper($annonce['titre'])?></h3>
+            <p class="card-text"><?php echo $annonce['description']?></p>
+            <p class="card-text"><?php echo $annonce['code_postal']?></p>
+            <p class="card-text"><?php echo $annonce['ville']?></p>
+            <h5 class="card-text"><?php echo $annonce['type']?></h5>
+            <p class="card-text"><?php echo $annonce['prix']?> €</p>
+            <p class="card-text"><?php echo $annonce['msg_reservation']?></p>
+
+            <form action="reserved-post.php" method="POST">
+                <input type="hidden" name="id" value="<?php echo $annonce['annonce_id']; ?>">
+
+                <div class="form-floating">
+                    <textarea class="form-control" id="msg_reservation" name="msg_reservation" style="height: 100px"></textarea>
+                </div>
+                
+                <div class="d-flex justify-content-center mt-2">
+                    <button type="submit" class="btn btn-primary w-25">Je Réserve</button>
+                </div>
+            </form>
+
+            <a href="all-annonces.php" class="btn btn-primary">Retour</a>
+        </div>
+    </div>
+
+</section>
