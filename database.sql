@@ -10,6 +10,6 @@ CREATE TABLE annonce(
     ville VARCHAR (250) NOT NULL,
     type VARCHAR (20) NOT NULL,
     prix INT (100) NOT NULL,
-    msg_reservation VARCHAR (250) NOT NULL
+    msg_reservation VARCHAR (50)
 );
 
